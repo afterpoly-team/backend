@@ -15,7 +15,7 @@ How to setup an environment to use this backend-server using command-line:
    - `pipenv shell`
 
    option 1:
-   - `pip install -r /path/to/requirements.txt`
+   - `pipenv install -r /path/to/requirements.txt`
 
    option 2:
    - `pipenv install django`
