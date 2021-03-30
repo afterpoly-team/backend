@@ -13,9 +13,16 @@ How to setup an environment to use this backend-server using command-line:
    - `pip install pipenv`
 3. Go to **pipenv** shell and install all packages:
    - `pipenv shell`
+
+   option 1:
+   - `pip install -r /path/to/requirements.txt`
+
+   option 2:
    - `pipenv install django`
    - `pipenv install djangorestframework`
    - `pipenv install django-cors-headers`
+   - `pipenv install django-modeltranslation`
+
 
 # usage
 
