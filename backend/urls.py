@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from catalog import views
+from django.conf.urls.i18n import i18n_patterns
 
 router = routers.DefaultRouter()
 router.register(r'events', views.EventViewSet, 'event')
@@ -24,5 +25,11 @@ router.register(r'events', views.EventViewSet, 'event')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include(router.urls))
+    path('api/', include(router.urls)),
+    path('i18n/', include('django.conf.urls.i18n')),
 ]
+
+urlpatterns += i18n_patterns(
+    path('api/', include(router.urls)),
+)
+
