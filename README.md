@@ -36,3 +36,7 @@ Now you must be able to work with server, using such commands:
   ] -> use this comannds after model-modigying
 
 - `python manage.py createsuperuser` - creates an admin user
+
+# style
+Python Coding Guidelines
+https://drive.google.com/file/d/1lFBLbd9vsRdgX7dXUpUzQzrH0mmwJO0N/view?usp=sharing
