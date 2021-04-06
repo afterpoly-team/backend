@@ -120,7 +120,10 @@ USE_L10N = True
 
 USE_TZ = True
 
-gettext = lambda s: s
+
+def gettext(s): return s
+
+
 LANGUAGES = (
     ('ru', gettext('Russia')),
     ('en', gettext('English')),
@@ -134,12 +137,11 @@ LANGUAGES = (
 STATIC_URL = '/static/'
 
 
-
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-#     'PAGE_SIZE': 10
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'backend.drf_defaults.DefaultResultsSetPagination',
+    'PAGE_SIZE': 10
+}
