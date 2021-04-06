@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
+# from .drf_defaults import Hello
 from pathlib import Path
 import os
 
@@ -120,9 +121,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-gettext = lambda s: s
+
+def gettext(s): return s
+
+
 LANGUAGES = (
-    ('ru', gettext('Russia')),
+    ('ru', gettext('Russian')),
     ('en', gettext('English')),
     ('fr', gettext('French')),
 )
@@ -134,12 +138,11 @@ LANGUAGES = (
 STATIC_URL = '/static/'
 
 
-
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
-# REST_FRAMEWORK = {
-#     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-#     'PAGE_SIZE': 10
-# }
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 5
+}
