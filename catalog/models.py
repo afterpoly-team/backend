@@ -38,8 +38,8 @@ class Event(models.Model):
     organizers = models.CharField(max_length=100)
     # TODO: change to html document probably
     additional_information = models.CharField(max_length=500)
-    main_image = models.ImageField()
-    background_image = models.ImageField()
+    main_image = models.ImageField(upload_to="events/")
+    background_image = models.ImageField(upload_to="events/")
     # TODO: implement array of photos
 
     class Meta:
