@@ -13,3 +13,7 @@ class EventAdmin(TranslationAdmin):
 @admin.register(Tag)
 class TagAdmin(TranslationAdmin):
     list_display = ('name',)
+
+
+admin.site.site_title = "AfterPoly administration"
+admin.site.site_header = "AfterPoly administration"
