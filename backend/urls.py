@@ -21,7 +21,7 @@ from django.conf.urls.i18n import i18n_patterns
 
 router = routers.DefaultRouter()
 router.register(r'events', views.EventViewSet, 'event')
-
+router.register(r'tags', views.TagViewSet, 'tag')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -32,4 +32,3 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('api/', include(router.urls)),
 )
-
