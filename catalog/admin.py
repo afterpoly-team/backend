@@ -1,46 +1,79 @@
 from django import forms
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 from .models import Event, Tag, OnlineEvent, Address, Place, RealLifeEvent
 from modeltranslation.admin import TranslationAdmin
 
 
-# admin.site.register(Address)
-admin.site.register(OnlineEvent, TranslationAdmin)
-admin.site.register(Place, TranslationAdmin)
-admin.site.register(RealLifeEvent, TranslationAdmin)
+# TODO: add list of dates as function parcing JSON
+
+# * CONSTANTS
+DISPLAY_FILEDS_EVENT_INHERITORS = ('title', 'short_description',
+                                   'organizers', 'get_main_image')
+READONLY_FIELDS_EVENT_INHERITORS = ('get_main_image', 'get_background_image')
+MAIN_IMG_DESC = 'Main image representation'
+BG_IMP_DESC = 'Background image representation'
+
+# * REGISTATION
+
 admin.site.register(Tag, TranslationAdmin)
-admin.site.register(Address, TranslationAdmin)
 
 
-#     list_display = ('title', 'creation_date',
-#                     'description', 'event_date', 'link', )
+# * ADDRESS
+@admin.register(Address)
+class AddressAdmin(TranslationAdmin):
+    list_display = ('country', 'city', 'district', 'region',
+                    'house_number', 'street', 'corps')
 
 
-# @admin.register(Address)
-# class AddressAdmin(TranslationAdmin):
-#     list_display = ('country', 'city', 'district', 'region',
-#                     'house_number', 'street', 'corps')
+# * ONLINE EVENT
+@admin.register(OnlineEvent)
+class OnlineEventAdmin(TranslationAdmin):
+    list_display = DISPLAY_FILEDS_EVENT_INHERITORS
+    readonly_fields = READONLY_FIELDS_EVENT_INHERITORS
+
+    def get_main_image(self, obj):
+        return mark_safe(f'<img src={obj.main_image.url} width="70" height="50"')
+
+    def get_background_image(self, obj):
+        return mark_safe(f'<img src={obj.background_image.url} width="100" height="70"')
+
+    get_main_image.short_description = MAIN_IMG_DESC
+    get_background_image.short_description = BG_IMP_DESC
 
 
-# @admin.register(OnlineEvent)
-# class OnlineEventAdmin(admin.ModelAdmin):
-#     list_display = ('__all__')
+# * PLACE
+@admin.register(Place)
+class PlaceAdmin(TranslationAdmin):
+    list_display = DISPLAY_FILEDS_EVENT_INHERITORS
+    readonly_fields = READONLY_FIELDS_EVENT_INHERITORS
+
+    def get_main_image(self, obj):
+        return mark_safe(f'<img src={obj.main_image.url} width="70" height="50"')
+
+    def get_background_image(self, obj):
+        return mark_safe(f'<img src={obj.background_image.url} width="100" height="70"')
+
+    get_main_image.short_description = MAIN_IMG_DESC
+    get_background_image.short_description = BG_IMP_DESC
 
 
-# @admin.register(Place)
-# class PlaceAdmin(admin.ModelAdmin):
-#     list_display = ('__all__')
+# * REAL LIFE EVENT
+@admin.register(RealLifeEvent)
+class RealLifeEventAdmin(TranslationAdmin):
+    list_display = DISPLAY_FILEDS_EVENT_INHERITORS
+    readonly_fields = READONLY_FIELDS_EVENT_INHERITORS
+
+    def get_main_image(self, obj):
+        return mark_safe(f'<img src={obj.main_image.url} width="70" height="50"')
+
+    def get_background_image(self, obj):
+        return mark_safe(f'<img src={obj.background_image.url} width="100" height="70"')
+
+    get_main_image.short_description = MAIN_IMG_DESC
+    get_background_image.short_description = BG_IMP_DESC
 
 
-# @admin.register(RealLifeEvent)
-# class RealLifeEventAdmin():
-#     list_display = ('__all__')
-
-
-# @admin.register(Tag)
-# class TagAdmin(admin.ModelAdmin):
-#     list_display = ('name',)
-
-
+# * ADMIN PANEL NAME
 admin.site.site_title = "AfterPoly administration"
 admin.site.site_header = "AfterPoly administration"
