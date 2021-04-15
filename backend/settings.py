@@ -136,6 +136,8 @@ LANGUAGES = (
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',

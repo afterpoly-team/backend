@@ -13,8 +13,8 @@ class Address(models.Model):
     corps = models.CharField(max_length=50, blank=True)
     house_number = models.PositiveIntegerField()
     # индекс (только русский?)
-    index = models.PositiveIntegerField(
-        min_value=100000, max_value=999999, blank=True)
+    #  min_value=100000, max_value=999999,
+    index = models.PositiveIntegerField(blank=True)
 
     def __str__(self):
         return (self.country + self.city + self.street + self.house_number)
@@ -34,10 +34,11 @@ class Event(models.Model):
     short_description = models.CharField(max_length=300)
     # event_date = models.DateTimeField()
     link = models.URLField(max_length=200, unique=True)
-    tag = models.ManyToManyField(Tag, on_delete=models.CASCADE)
+    # , on_delete=models.CASCADE
+    tag = models.ManyToManyField(Tag)
     organizers = models.CharField(max_length=100)
     # TODO: change to html document probably
-    additional_information = models.CharField(max_length=500)
+    additional_information = models.CharField(max_length=500, blank=True)
     main_image = models.ImageField(upload_to="events/")
     background_image = models.ImageField(upload_to="events/")
     # TODO: implement array of photos
@@ -51,6 +52,11 @@ class Event(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_image(self):
+        # if not self.img:
+        #     return f'{settings.STATIC_URL}NOT_FOUND.png'
+        return self.main_image.ur
 
 
 class OnlineEvent(Event):

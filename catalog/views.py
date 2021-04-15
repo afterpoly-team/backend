@@ -1,14 +1,14 @@
 from django.shortcuts import render
-from .serializers import EventSerializer, TagSerializer
-from .models import Event, Tag
+from .serializers import OnlineEventSerializer, TagSerializer
+from .models import Event, Tag, OnlineEvent, Address, Place, RealLifeEvent
 from rest_framework import viewsets, pagination
 
 # Create your views here.
 
 
-class EventViewSet(viewsets.ModelViewSet):
-    serializer_class = EventSerializer
-    queryset = Event.objects.all()
+class OnlineEventViewSet(viewsets.ModelViewSet):
+    serializer_class = OnlineEventSerializer
+    queryset = OnlineEvent.objects.all()
 
 
 class TagViewSet(viewsets.ModelViewSet):

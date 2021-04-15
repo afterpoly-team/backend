@@ -1,12 +1,28 @@
-from modeltranslation.translator import register, TranslationOptions
-from .models import Event, Tag
+from modeltranslation.translator import translator, register, TranslationOptions
+from .models import Event, Tag, OnlineEvent, Address, Place, RealLifeEvent
 
 
 @register(Event)
 class EventTranslationOptions(TranslationOptions):
-    fields = ('title', 'description')
+    fields = ('title', 'description', 'short_description',
+              'organizers', 'additional_information')
 
 
 @register(Tag)
 class TagTranslationOptions(TranslationOptions):
-    fields = ('name', )
+    fields = ('name',)
+
+
+@register(Address)
+class AddressTranslationOptions(TranslationOptions):
+    fields = ('country', 'city', 'district', 'region', 'street', 'corps')
+
+
+# @register(Place)
+# class PlaceTranslationOptions(EventTranslationOptions):
+#     fileds = ('address')
+
+
+translator.register(Place)
+translator.register(RealLifeEvent)
+translator.register(OnlineEvent)

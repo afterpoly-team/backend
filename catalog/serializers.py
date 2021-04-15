@@ -1,12 +1,11 @@
 from rest_framework import serializers
-from .models import Event, Tag
+from .models import Event, Tag, OnlineEvent, Address, Place, RealLifeEvent
 
 
-class EventSerializer(serializers.HyperlinkedModelSerializer):
+class OnlineEventSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = Event
-        fields = ('url', 'id', 'title', 'creation_date',
-                  'description', 'event_date', 'link', 'tag',)
+        model = OnlineEvent
+        fields = '__all__'
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):

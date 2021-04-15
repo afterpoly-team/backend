@@ -18,9 +18,11 @@ from django.urls import path, include
 from rest_framework import routers
 from catalog import views
 from django.conf.urls.i18n import i18n_patterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'events', views.EventViewSet, 'event')
+router.register(r'events', views.OnlineEventViewSet, 'event')
 router.register(r'tags', views.TagViewSet, 'tag')
 
 urlpatterns = [
@@ -32,3 +34,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path('api/', include(router.urls)),
 )
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
