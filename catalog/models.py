@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 
 class Address(models.Model):
     country = models.CharField(max_length=50)
@@ -19,12 +17,20 @@ class Address(models.Model):
     def __str__(self):
         return (self.country + self.city + self.street + self.house_number)
 
+    class Meta:
+        verbose_name = 'Address'
+        verbose_name_plural = 'Addresses'
+
 
 class Tag(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = 'Tag'
+        verbose_name_plural = 'Tags'
 
 
 class Event(models.Model):
@@ -39,15 +45,13 @@ class Event(models.Model):
     organizers = models.CharField(max_length=100)
     # TODO: change to html document probably
     additional_information = models.CharField(max_length=500, blank=True)
-    main_image = models.ImageField(upload_to="events/")
-    background_image = models.ImageField(upload_to="events/")
+    main_image = models.ImageField(
+        default="img_not_found", upload_to="events/")
+    background_image = models.ImageField(
+        default="img_not_found_bg", upload_to="events/")
     # TODO: implement array of photos
 
     class Meta:
-        # db_table = ''
-        # managed = True
-        # verbose_name = 'ModelName'
-        # verbose_name_plural = 'ModelNames'
         abstract = True
 
     def __str__(self):
@@ -66,12 +70,20 @@ class OnlineEvent(Event):
     def __str__(self):
         return self.title
 
+    class Meta:
+        verbose_name = 'Online Event'
+        verbose_name_plural = 'Online Events'
+
 
 class Place(Event):
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Place'
+        verbose_name_plural = 'Places'
 
 
 class RealLifeEvent(Place):
@@ -80,3 +92,7 @@ class RealLifeEvent(Place):
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        verbose_name = 'Real Life Event'
+        verbose_name_plural = 'Real Life Events'

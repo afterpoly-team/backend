@@ -22,7 +22,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'events', views.OnlineEventViewSet, 'event')
+router.register(r'online-events', views.OnlineEventViewSet, 'online-event')
 router.register(r'tags', views.TagViewSet, 'tag')
 
 urlpatterns = [

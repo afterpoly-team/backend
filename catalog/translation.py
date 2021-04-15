@@ -18,11 +18,6 @@ class AddressTranslationOptions(TranslationOptions):
     fields = ('country', 'city', 'district', 'region', 'street', 'corps')
 
 
-# @register(Place)
-# class PlaceTranslationOptions(EventTranslationOptions):
-#     fileds = ('address')
-
-
 translator.register(Place)
 translator.register(RealLifeEvent)
 translator.register(OnlineEvent)
