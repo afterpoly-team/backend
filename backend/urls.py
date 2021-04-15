@@ -22,8 +22,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'online-events', views.OnlineEventViewSet, 'online-event')
+router.register(r'online-events', views.OnlineEventViewSet, 'online_event')
+router.register(r'places', views.PlaceViewSet, 'place')
+router.register(r'real-life-events',
+                views.RealLifeEventViewSet, 'real_life_event')
 router.register(r'tags', views.TagViewSet, 'tag')
+router.register(r'addresses', views.AdressViewSet, 'address')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),

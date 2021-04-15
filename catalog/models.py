@@ -8,14 +8,14 @@ class Address(models.Model):
     region = models.CharField(max_length=50, blank=True)
     street = models.CharField(max_length=50)
     # корпус
-    corps = models.CharField(max_length=50, blank=True)
+    corps = models.PositiveIntegerField(blank=True, null=True, unique=False)
     house_number = models.PositiveIntegerField()
     # индекс (только русский?)
     #  min_value=100000, max_value=999999,
-    index = models.PositiveIntegerField(blank=True)
+    index = models.PositiveIntegerField(blank=True, null=True, unique=False)
 
     def __str__(self):
-        return (self.country + self.city + self.street + self.house_number)
+        return (self.country + ' ' + self.city + ' ' + self.street + ' ' + str(self.house_number))
 
     class Meta:
         verbose_name = 'Address'
@@ -58,8 +58,8 @@ class Event(models.Model):
         return self.title
 
     def get_image(self):
-        # if not self.img:
-        #     return f'{settings.STATIC_URL}NOT_FOUND.png'
+        if not self.img:
+            return f'{settings.STATIC_URL}NOT_FOUND.png'
         return self.main_image.ur
 
 

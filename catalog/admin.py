@@ -9,15 +9,17 @@ admin.site.register(OnlineEvent, TranslationAdmin)
 admin.site.register(Place, TranslationAdmin)
 admin.site.register(RealLifeEvent, TranslationAdmin)
 admin.site.register(Tag, TranslationAdmin)
+admin.site.register(Address, TranslationAdmin)
 
 
 #     list_display = ('title', 'creation_date',
 #                     'description', 'event_date', 'link', )
 
 
-@admin.register(Address)
-class AddressAdmin(TranslationAdmin):
-    list_display = ('country', 'city', 'district', 'region', 'street', 'corps')
+# @admin.register(Address)
+# class AddressAdmin(TranslationAdmin):
+#     list_display = ('country', 'city', 'district', 'region',
+#                     'house_number', 'street', 'corps')
 
 
 # @admin.register(OnlineEvent)

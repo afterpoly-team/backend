@@ -15,7 +15,7 @@ class TagTranslationOptions(TranslationOptions):
 
 @register(Address)
 class AddressTranslationOptions(TranslationOptions):
-    fields = ('country', 'city', 'district', 'region', 'street', 'corps')
+    fields = ('country', 'city', 'district', 'region', 'street', )
 
 
 translator.register(Place)
