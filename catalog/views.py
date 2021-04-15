@@ -2,12 +2,16 @@ from django.shortcuts import render
 from .serializers import OnlineEventSerializer, TagSerializer, RealLifeEventSerializer, PlaceSerializer, AddressSerializer
 from .models import Event, Tag, OnlineEvent, Address, Place, RealLifeEvent
 from rest_framework import viewsets, pagination
-
-# Create your views here.
+from django_filters.rest_framework import DjangoFilterBackend
+from .service import OnlineEventFilter, PlaceFilter, RealLifeEventFilter
 
 
 class OnlineEventViewSet(viewsets.ModelViewSet):
     serializer_class = OnlineEventSerializer
+    # * filtering
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = OnlineEventFilter
+
     queryset = OnlineEvent.objects.all()
 
 
@@ -19,11 +23,19 @@ class TagViewSet(viewsets.ModelViewSet):
 
 class RealLifeEventViewSet(viewsets.ModelViewSet):
     serializer_class = RealLifeEventSerializer
+    # * filtering
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = RealLifeEventFilter
+
     queryset = RealLifeEvent.objects.all()
 
 
 class PlaceViewSet(viewsets.ModelViewSet):
     serializer_class = PlaceSerializer
+    # * filtering
+    filter_backends = (DjangoFilterBackend,)
+    filterset_class = PlaceFilter
+
     queryset = Place.objects.all()
 
 

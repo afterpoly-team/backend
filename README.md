@@ -26,6 +26,7 @@ How to setup an environment to use this backend-server using command-line:
     - `pipenv install django-cors-headers==3.7.0`
     - `pipenv install django-modeltranslation==0.16.2`
     - `pipenv install Pillow==8.2.0`
+    - `pipenv install django-filter==2.4.0`
       ...
       etc depends on what inside the requirements
 
@@ -58,3 +59,17 @@ Now you must be able to work with server, using such commands:
     }
 ]
 ```
+
+# how to use query params
+
+in the url, after '?' sign, you can add the filtering param,
+as an example (many params are concatenated by '&' sign, NO SPACES ALLOWED):
+
+-   Pagination:
+    `.../?page_size=1`->sets page size, as you can guess
+    (http://127.0.0.1:8000/ru/api/places/?page_size=1 OR http://127.0.0.1:8000/ru/api/places/?page=2&page_size=1 e.t.c)
+    `.../?page=2`-> sets the page you see
+    (http://127.0.0.1:8000/ru/api/online-events/?page=2&page_size=1 e.t.c)
+
+-   Filtering:
+    http://127.0.0.1:8000/ru/api/real-life-events/?tags=Концерт OR http://127.0.0.1:8000/ru/api/real-life-events/?tags=Концерт&tags=Фильм&tags=Обучение e.t.c

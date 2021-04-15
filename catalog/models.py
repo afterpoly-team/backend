@@ -41,7 +41,7 @@ class Event(models.Model):
     # event_date = models.DateTimeField()
     link = models.URLField(max_length=200, unique=True)
     # , on_delete=models.CASCADE
-    tag = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag)
     organizers = models.CharField(max_length=100)
     # TODO: change to html document probably
     additional_information = models.CharField(max_length=500, blank=True)

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'catalog',
     'corsheaders',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -144,6 +145,9 @@ CORS_ORIGIN_WHITELIST = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'backend.drf_defaults.DefaultResultsSetPagination',
     'PAGE_SIZE': 10
 }

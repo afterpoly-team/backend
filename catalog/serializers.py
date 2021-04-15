@@ -3,9 +3,9 @@ from .models import Event, Tag, OnlineEvent, Address, Place, RealLifeEvent
 
 # * HyperlinkedModelSerializer to be able to go to Tags as links, not as numbers
 
-# event_fields = ('url', 'id', 'title', 'description', 'short_description', 'link',
-#                 'tag', 'organizers', 'list_of_dates', 'additional_information', 'main_image',
-#                 'background_image', 'creation_date', )
+FILEDS_EVENT_INHERITORS = ['url', 'id', 'title', 'description', 'short_description', 'link',
+                           'tags', 'organizers', 'additional_information', 'main_image',
+                           'background_image', 'creation_date', ]
 
 
 class OnlineEventSerializer(serializers.HyperlinkedModelSerializer):
@@ -13,9 +13,7 @@ class OnlineEventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = OnlineEvent
-        fields = ('url', 'id', 'title', 'description', 'short_description', 'link',
-                  'tag', 'organizers', 'list_of_dates', 'additional_information', 'main_image',
-                  'background_image', 'creation_date', )
+        fields = FILEDS_EVENT_INHERITORS + ['list_of_dates', ]
 
 
 class PlaceSerializer(serializers.HyperlinkedModelSerializer):
@@ -23,9 +21,7 @@ class PlaceSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Place
-        fields = ('url', 'id', 'title', 'description', 'short_description', 'link',
-                  'tag', 'organizers', 'additional_information', 'main_image',
-                  'background_image', 'creation_date', 'address', )
+        fields = FILEDS_EVENT_INHERITORS + ['address', ]
 
 
 class RealLifeEventSerializer(serializers.HyperlinkedModelSerializer):
@@ -34,9 +30,7 @@ class RealLifeEventSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = RealLifeEvent
-        fields = ('url', 'id', 'title', 'description', 'short_description', 'link',
-                  'tag', 'organizers', 'list_of_dates', 'additional_information', 'main_image',
-                  'background_image', 'creation_date', 'address', )
+        fields = FILEDS_EVENT_INHERITORS + ['address', 'list_of_dates', ]
 
 
 class AddressSerializer(serializers.ModelSerializer):
