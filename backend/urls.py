@@ -18,9 +18,16 @@ from django.urls import path, include
 from rest_framework import routers
 from catalog import views
 from django.conf.urls.i18n import i18n_patterns
+from django.conf import settings
+from django.conf.urls.static import static
 
 router = routers.DefaultRouter()
-router.register(r'events', views.EventViewSet, 'event')
+router.register(r'online-events', views.OnlineEventViewSet, 'online_event')
+router.register(r'places', views.PlaceViewSet, 'place')
+router.register(r'real-life-events',
+                views.RealLifeEventViewSet, 'real_life_event')
+router.register(r'tags', views.TagViewSet, 'tag')
+router.register(r'addresses', views.AdressViewSet, 'address')
 
 
 urlpatterns = [
@@ -33,3 +40,6 @@ urlpatterns += i18n_patterns(
     path('api/', include(router.urls)),
 )
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

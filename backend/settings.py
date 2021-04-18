@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'catalog',
     'corsheaders',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -136,12 +137,17 @@ LANGUAGES = (
 
 STATIC_URL = '/static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
     'DEFAULT_PAGINATION_CLASS': 'backend.drf_defaults.DefaultResultsSetPagination',
     'PAGE_SIZE': 10
 }
