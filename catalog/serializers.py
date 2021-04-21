@@ -8,7 +8,7 @@ FILEDS_EVENT_INHERITORS = ['url', 'id', 'title', 'description', 'short_descripti
                            'background_image', 'creation_date', ]
 
 
-class OnlineEventSerializer(serializers.HyperlinkedModelSerializer):
+class OnlineEventSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name="online_event-detail")
 
     class Meta:
@@ -16,7 +16,7 @@ class OnlineEventSerializer(serializers.HyperlinkedModelSerializer):
         fields = FILEDS_EVENT_INHERITORS + ['list_of_dates', ]
 
 
-class PlaceSerializer(serializers.HyperlinkedModelSerializer):
+class PlaceSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(view_name="place-detail")
 
     class Meta:
@@ -24,7 +24,7 @@ class PlaceSerializer(serializers.HyperlinkedModelSerializer):
         fields = FILEDS_EVENT_INHERITORS + ['address', ]
 
 
-class RealLifeEventSerializer(serializers.HyperlinkedModelSerializer):
+class RealLifeEventSerializer(serializers.ModelSerializer):
     url = serializers.HyperlinkedIdentityField(
         view_name="real_life_event-detail")
 
@@ -43,4 +43,4 @@ class AddressSerializer(serializers.ModelSerializer):
 class TagSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Tag
-        fields = ('url', 'name', )
+        fields = ('url', 'id', 'name', )
