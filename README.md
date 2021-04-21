@@ -12,7 +12,6 @@ How to setup an environment to use this backend-server using command-line:
     - go to directory you cloned this repository
     - `pip install pipenv`
 3. Go to **pipenv** shell and install all packages:
-
     - `pipenv shell`
 
     option 1:
@@ -73,3 +72,9 @@ as an example (many params are concatenated by '&' sign, NO SPACES ALLOWED):
 
 -   Filtering:
     http://127.0.0.1:8000/ru/api/real-life-events/?tags=Концерт OR http://127.0.0.1:8000/ru/api/real-life-events/?tags=Концерт&tags=Фильм&tags=Обучение e.t.c
+
+
+# style
+Python Coding Guidelines
+https://drive.google.com/file/d/1lFBLbd9vsRdgX7dXUpUzQzrH0mmwJO0N/view?usp=sharing
+
