@@ -32,6 +32,8 @@ class OnlineEventAdmin(TranslationAdmin):
     list_display = DISPLAY_FILEDS_EVENT_INHERITORS
     readonly_fields = READONLY_FIELDS_EVENT_INHERITORS
 
+    search_fields = ['title']
+
     def get_main_image(self, obj):
         return mark_safe(f'<img src={obj.main_image.url} width="70" height="50"')
 
@@ -47,6 +49,8 @@ class OnlineEventAdmin(TranslationAdmin):
 class PlaceAdmin(TranslationAdmin):
     list_display = DISPLAY_FILEDS_EVENT_INHERITORS
     readonly_fields = READONLY_FIELDS_EVENT_INHERITORS
+
+    search_fields = ['title']
 
     def get_main_image(self, obj):
         return mark_safe(f'<img src={obj.main_image.url} width="70" height="50"')
@@ -64,6 +68,9 @@ class RealLifeEventAdmin(TranslationAdmin):
     list_display = DISPLAY_FILEDS_EVENT_INHERITORS
     readonly_fields = READONLY_FIELDS_EVENT_INHERITORS
 
+    search_fields = ['title']
+
+ 
     def get_main_image(self, obj):
         return mark_safe(f'<img src={obj.main_image.url} width="70" height="50"')
 

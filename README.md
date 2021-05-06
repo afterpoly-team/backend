@@ -47,9 +47,9 @@ Now you must be able to work with server, using such commands:
 
 ```
 [
-    "event_date": "21-04-16",
-    "event_date": "21-04-17",
-    "event_date": "21-04-18"
+    "21-04-16",
+    "21-04-17",
+    "21-04-18"
 ]
 ```
 

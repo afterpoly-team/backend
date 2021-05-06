@@ -1,5 +1,6 @@
 from django_filters import rest_framework as filters
 from .models import OnlineEvent, Place, RealLifeEvent
+from drf_multiple_model.pagination import MultipleModelLimitOffsetPagination
 
 
 class CharFilterInFilter(filters.BaseInFilter, filters.CharFilter):
@@ -28,3 +29,7 @@ class RealLifeEventFilter(filters.FilterSet):
     class Meta:
         model = RealLifeEvent
         fields = ['tags', ]
+
+
+class LimitPagination(MultipleModelLimitOffsetPagination):
+    default_limit = 15
